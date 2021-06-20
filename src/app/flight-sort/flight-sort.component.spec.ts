@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DatePipe } from '@angular/common';
 
 import { FlightSortComponent } from './flight-sort.component';
 
@@ -8,7 +9,8 @@ describe('FlightSortComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlightSortComponent ]
+      declarations: [ FlightSortComponent ],
+      providers: [DatePipe]
     })
     .compileComponents();
   });

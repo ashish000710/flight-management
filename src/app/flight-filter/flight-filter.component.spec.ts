@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DatePipe } from '@angular/common';
 
 import { FlightFilterComponent } from './flight-filter.component';
 
@@ -8,7 +9,8 @@ describe('FlightFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlightFilterComponent ]
+      declarations: [ FlightFilterComponent ],
+      providers: [DatePipe]
     })
     .compileComponents();
   });

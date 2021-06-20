@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { DatePipe } from '@angular/common';
 
 import { UtilService } from './util.service';
 
@@ -6,7 +7,9 @@ describe('UtilService', () => {
   let service: UtilService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [DatePipe]
+    });
     service = TestBed.inject(UtilService);
   });
 

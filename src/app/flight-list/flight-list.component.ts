@@ -28,8 +28,8 @@ export class FlightListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.travelDate = new Date(this.searchParam.departureDate);
-    this.flightList = this.setFlightMetadata(this.flightList);
+    this.travelDate = this.searchParam?.departureDate ? new Date(this.searchParam?.departureDate) : new Date();
+    this.flightList = this.flightList ? this.setFlightMetadata(this.flightList) : [];
     this.flightListBackup = this.flightList;
   }
 

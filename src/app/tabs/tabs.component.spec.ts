@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DatePipe } from '@angular/common';
 
 import { TabsComponent } from './tabs.component';
 
@@ -8,7 +9,8 @@ describe('TabsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TabsComponent ]
+      declarations: [ TabsComponent ],
+      providers: [DatePipe]
     })
     .compileComponents();
   });

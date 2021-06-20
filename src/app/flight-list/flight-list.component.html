@@ -8,7 +8,7 @@
     <div class="flight-list-section" *ngIf="!showSortSectionOnMobile && !showFilterSectionOnMobile">
       <div class="header-section">
         <fa-icon *ngIf="isMobileDevice" class="left-arrow" [icon]="faArrowLeft" (click)="gotToSearchPage()"></fa-icon>
-        {{searchParam.departure.value}} <fa-icon [icon]="faArrowRight"></fa-icon> {{searchParam.destination.value}} {{travelDate | date}}
+        {{searchParam?.departure.value}} <fa-icon [icon]="faArrowRight"></fa-icon> {{searchParam?.destination.value}} {{travelDate | date}}
       </div>
       <ng-container *ngIf="flightList">
         <div class="flight-list-wrapper" *ngFor="let flights of flightList">

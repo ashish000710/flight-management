@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DatePipe } from '@angular/common';
 
 import { CalendarComponent } from './calendar.component';
 
@@ -8,7 +9,8 @@ describe('CalendarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalendarComponent ]
+      declarations: [ CalendarComponent ],
+      providers: [DatePipe]
     })
     .compileComponents();
   });

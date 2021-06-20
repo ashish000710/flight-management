@@ -1,49 +1,15 @@
 
 <div class="flight-section">
   <div class="left-panel" *ngIf="!isMobileDevice">
-    <!-- <div class="highlight-card">
-      <h1>Sort Section</h1>
-      <div class="sort-container" *ngFor="let sort of sortingOption">
-        <input type="radio" name="sortOption" (click)="sortBySelectedValue(sort)" [checked]="selectedSorting.id === sort.id"/>
-        <label for="sortOption" class="input-label-details">{{sort.name}}</label>
-      </div>
-    </div> -->
-    <flight-sort class="highlight-card" [flightList]="flightList" (notifyOnSortSelection)="sortFlightBySelectedParam($event)"></flight-sort>
-    <flight-filter class="highlight-card" [flightList]="flightList" [flightListBackup]="flightListBackup" (notifyOnFilterSelection)="filterFlight($event)"></flight-filter>
-  <!-- <div class="highlight-card">
-      <h1>Filter Section</h1>
-      <div class="price-range-wrapper">
-        <div class="min-price-container">
-          <label class="min-price-label">minimum price</label>
-          <label class="currency-details">Rs</label>
-          <input type="text" [(ngModel)]="value"/>
-        </div>
-        <div class="min-price-container">
-          <label class="min-price-label">maximum price</label>
-          <label class="currency-details">Rs</label>
-          <input type="text" [(ngModel)]="highValue"/>
-        </div>
-        <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ngx-slider>
-      </div>
-      <div class="booking-filter-wrapper">
-        <div class="sort-container" *ngFor="let bookingClass of bookingFilterArray">
-          <input type="checkbox" [value]="bookingClass.classId" (change)="updateBookingClassFilter($event, bookingClass)"/>
-          <label class="input-label-details">{{bookingClass.className}} ({{bookingClass.seatAvailable}})</label>
-          <span class="input-label-details">{{bookingClass.currency}}</span>
-        </div>
-      </div>
-      <div class="filter-btn-wrapper">
-        <button type="button" class="btn-details reset-btn" (click)="resetFilter()">Reset All</button>
-      <button type="button" class="btn-details apply-btn" (click)="applyFilter()">Apply</button>
-      </div>
-  </div> -->
+    <flight-sort [flightList]="flightList" (notifyOnSortSelection)="sortFlightBySelectedParam($event)"></flight-sort>
+    <flight-filter [flightList]="flightList" [flightListBackup]="flightListBackup" (notifyOnFilterSelection)="filterFlight($event)"></flight-filter>
   </div>
   <div class="right-panel">
-    <div class="flight-header-section">
-      <fa-icon *ngIf="isMobileDevice" [icon]="faArrowLeft" (click)="gotToSearchPage()"></fa-icon>
-      {{searchParam.departure.value}} <fa-icon [icon]="faArrowRight"></fa-icon> {{searchParam.destination.value}} {{travelDate | date}}
-    </div>
     <div class="flight-list-section" *ngIf="!showSortSectionOnMobile && !showFilterSectionOnMobile">
+      <div class="header-section">
+        <fa-icon *ngIf="isMobileDevice" class="left-arrow" [icon]="faArrowLeft" (click)="gotToSearchPage()"></fa-icon>
+        {{searchParam.departure.value}} <fa-icon [icon]="faArrowRight"></fa-icon> {{searchParam.destination.value}} {{travelDate | date}}
+      </div>
       <ng-container *ngIf="flightList">
         <div class="flight-list-wrapper" *ngFor="let flights of flightList">
 
@@ -103,47 +69,8 @@
     </div>
 
     <div class="left-panel" *ngIf="isMobileDevice">
-      <!-- <div class="highlight-card" *ngIf="showSortSectionOnMobile">
-          <h1>Sort Section</h1>
-          <div class="sort-container" *ngFor="let sort of sortingOption">
-            !!!{{selectedSorting.id === sort.id}}
-            <input type="radio" name="sortOption" value="{{sort.id}}" (click)="sortBySelectedValue(sort)" [checked]="selectedSorting === sort"/>
-            <label for="sortOption" class="input-label-details">{{sort.name}}</label>
-          </div>
-          <input type="radio" value="alpha"/>
-          alpha
-      </div> -->
-      showSortSectionOnMobile: {{showSortSectionOnMobile}}
-      showFilterSectionOnMobile: {{showFilterSectionOnMobile}}
-      <flight-sort *ngIf="showSortSectionOnMobile" [flightList]="flightList" (notifyOnSortSelection)="sortFlightBySelectedParam($event)" (notifyOnBackButton)="showSortPage($event)"></flight-sort>
-      <flight-filter *ngIf="showFilterSectionOnMobile" [flightList]="flightList" [flightListBackup]="flightListBackup" (notifyOnFilterSelection)="filterFlight($event)"></flight-filter>
-      <!-- <div class="highlight-card" *ngIf="showFilterSectionOnMobile">
-          <h1>Filter Section</h1>
-          <div class="price-range-wrapper">
-            <div class="min-price-container">
-              <label class="min-price-label">minimum price</label>
-              <label class="currency-details">Rs</label>
-              <input type="text" [(ngModel)]="value"/>
-            </div>
-            <div class="min-price-container">
-              <label class="min-price-label">maximum price</label>
-              <label class="currency-details">Rs</label>
-              <input type="text" [(ngModel)]="highValue"/>
-            </div>
-            <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ngx-slider>
-          </div>
-          <div class="booking-filter-wrapper">
-            <div class="sort-container" *ngFor="let bookingClass of bookingFilterArray">
-              <input type="checkbox" [value]="bookingClass.classId" (change)="updateBookingClassFilter($event, bookingClass)"/>
-              <label class="input-label-details">{{bookingClass.className}} ({{bookingClass.seatAvailable}})</label>
-              <span class="input-label-details">{{bookingClass.currency}}</span>
-            </div>
-          </div>
-          <div class="filter-btn-wrapper">
-            <button type="button" class="btn-details reset-btn" (click)="resetFilter()">Reset All</button>
-          <button type="button" class="btn-details apply-btn" (click)="applyFilter()">Apply</button>
-          </div>
-      </div> -->
+      <flight-sort *ngIf="showSortSectionOnMobile" [flightList]="flightList" (notifyOnSortSelection)="sortFlightBySelectedParam($event)" (notifyOnBackButton)="redirectSortToFlightList($event)"></flight-sort>
+      <flight-filter *ngIf="showFilterSectionOnMobile" [flightList]="flightList" [flightListBackup]="flightListBackup" (notifyOnFilterSelection)="filterFlight($event)" (notifyOnBackButton)="redirectFilterToFlightList($event)"></flight-filter>
     </div>
 
     <div class="mobile-filter-wrapper" *ngIf="isMobileDevice">
@@ -152,6 +79,5 @@
         <button type="button" class="btn-details apply-btn" (click)="showFilterFlightSectionOnMobile()">Filters</button>
       </ng-container>
     </div>
-
   </div>
 </div>

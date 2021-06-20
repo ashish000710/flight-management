@@ -34,38 +34,4 @@ export class TabsComponent implements OnInit {
     this.flightList = flightList;
     this.showFlights = true;
   }
-
-  // applyFilter(): void {
-
-  //   this.flightFilterObject.minPrice = this.value;
-  //   this.flightFilterObject.maxPrice = this.highValue;
-  //   if(this.flightFilterObject.bookingClass.length > 0) {
-  //     this.flightFilterObject.bookingClass.forEach(bookingClass=> {
-  //       this.flightList = this.flightListBackup.filter(elem=> {
-  //         return elem.priceMap[bookingClass].seatAvailable > 0;
-  //       });
-  //     });
-  //     console.log(this.flightList);
-  //     if(this.flightFilterObject.minPrice >= 0 && this.flightFilterObject.maxPrice >= 0) {
-  //       let flightListArr = this.flightList.filter((elem: FlightDetailModel)=> {
-  //         return elem.priceMap.economy.amount >= this.flightFilterObject.minPrice;
-  //       }).filter((elem: FlightDetailModel)=> {
-  //         return elem.priceMap.economy.amount <= this.flightFilterObject.maxPrice;
-  //       });
-  //       this.flightList = flightListArr;
-  //     }
-  //   } else {
-  //     if(this.flightFilterObject.minPrice >= 0 && this.flightFilterObject.maxPrice >= 0) {
-  //       let flightListArr = this.flightListBackup.filter((elem: FlightDetailModel)=> {
-  //         return elem.priceMap.economy.amount >= this.flightFilterObject.minPrice;
-  //       }).filter((elem: FlightDetailModel)=> {
-  //         return elem.priceMap.economy.amount <= this.flightFilterObject.maxPrice;
-  //       });
-  //       this.flightList = flightListArr;
-  //     }
-  //   }
-  // }
-  sortFlightBySelectedParam(event: any) {
-    console.log(event);
-  }
 }

@@ -1,11 +1,4 @@
 
 <label *ngIf="fieldLabel" for="{{fieldId}}">{{fieldLabel}}</label>
-<input
-  type="text"
-  class="form-control"
-  bsDatepicker
-  [bsValue]="dateObject"
-  [minDate]="minDateAllowed"
-  (bsValueChange)="bsValueChange($event)"
-/>
+<input type="text" class="form-control" bsDatepicker [bsValue]="dateObject" [minDate]="minDateAllowed" (bsValueChange)="bsValueChange($event)"/>
 

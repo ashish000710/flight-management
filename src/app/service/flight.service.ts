@@ -24,18 +24,16 @@ export class FlightService {
           'name': 'Mumbai', 
           'code': 'BOM'
       },
-      // departureTime: new Date('06/17/2021 00:00:00').getTime(),
       departureTime: new Date().getTime(),
       departureDateString: '',
       journeyTime: 28800000,
       journeyTimeString: '',
       arrivalTime: new Date(new Date().getTime() + 28800000).getTime(),
       arrivalDateString: '',
-      // travellers: new TravellerModel(),
       class: [{
           'id': 'economy',
-      'name': 'Economy'
-      }, {
+        'name': 'Economy'
+        }, {
           'id': 'firstClass',
           'name':  'First Class'
       }],
@@ -96,7 +94,6 @@ export class FlightService {
       returnDateString: '',
       arrivalTime: new Date(new Date().getTime() + 5400000).getTime(),
       arrivalDateString: '',
-      // travellers: new TravellerModel(),
       class: [{
           'id': 'economy',
           'name': 'Economy'
@@ -146,15 +143,6 @@ export class FlightService {
       const availableSeatForSelectedClass = flight.priceMap[SearchParamObj.class.value].seatAvailable;
       return (availableSeatForSelectedClass > 0 && availableSeatForSelectedClass >= travellerCount);
     })
-    // flightList =  flightList.filter((flight:FlightDetailModel)=> flight.departure.code === SearchParamObj.departure.value);
-    // flightList =  flightList.filter((flight:FlightDetailModel)=>flight.destination.code === SearchParamObj.destination.value);
-    // flightList =  flightList.filter((flight:FlightDetailModel)=>this.utilService.transformDate(flight.departureTime) === this.utilService.transformDate(SearchParamObj.departureDate));
-    // flightList =  flightList.filter((flight:FlightDetailModel)=> flight.availableSeatsCount >= SearchParamObj.travellers.value);
-    // flightList =  flightList.filter((flight:FlightDetailModel)=> {
-    //   const travellerCount = SearchParamObj.travellers.value;
-    //   const availableSeatForSelectedClass = flight.priceMap[SearchParamObj.class.value].seatAvailable;
-    //   return (availableSeatForSelectedClass > 0 && availableSeatForSelectedClass >= travellerCount);
-    // })
     return flightList;
   }
 

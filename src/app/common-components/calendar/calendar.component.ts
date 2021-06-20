@@ -16,8 +16,8 @@ import { UtilService } from 'src/app/service/util.service';
   ]
 })
 export class CalendarComponent implements ControlValueAccessor, OnInit {
-  private onChange: any = () => { }
-  private onTouched: any = () => { }
+  onChange: any = () => { }
+  onTouched: any = () => { }
   public value: any = '';
 
   @Input() fieldLabel?: string;
@@ -31,8 +31,6 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
   }
 
   public bsValueChange(event: any) {
-    console.log(event);
-    // this.value = event;
     this.dateObject = event;
     this.writeValue(event);
     this.onTouched();
@@ -42,12 +40,11 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
     this.value = this.utilService.transformDate(value);
     this.onChange(this.value);
     this.notifyOnDateChange.emit(value);
-    console.log('writeValue', 'old: ' + value, 'new: ' + this.value);
   }
 
   public registerOnChange(fn: any) {
     this.onChange = fn;
-    this.onChange(this.value); // for OnInit cycle
+    this.onChange(this.value);
   }
 
   public registerOnTouched(fn: any) {

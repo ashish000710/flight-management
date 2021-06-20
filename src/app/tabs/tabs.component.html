@@ -5,9 +5,6 @@
           <ng-container *ngIf="(!isMobileDevice || (isMobileDevice && !isFormSubmit))">
             <search-flight (onFetchSearchParam)="fetchFlightList($event)"></search-flight>
           </ng-container>
-          <!-- <ng-template #mobileView>
-            <search-flight (onFetchSearchParam)="fetchFlightList($event)"></search-flight>
-          </ng-template> -->
           <flight-list *ngIf="showFlights && isFormSubmit" [searchParam]="searchParams" [flightList]="flightList"></flight-list>
       </div>
     </tab>

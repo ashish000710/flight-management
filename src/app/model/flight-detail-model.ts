@@ -1,66 +1,3 @@
-// export class FlightDetailModel {
-//     name: string = "Alpha Airlines";
-//     id: string = "abc123"
-//     logo?: string = "alpha_airlines";
-//     departure: DepartureModel = {
-//         'id': '2', 
-//         'name': 'Chennai', 
-//         'code': 'CHN'
-//     };
-//     destination: DepartureModel = {
-//         'id': '0', 
-//         'name': 'Mumbai', 
-//         'code': 'BOM'
-//     };
-//     departureTime: number = new Date().getTime();
-//     departureDateString?: string = '';
-//     journeyTime: number = 5400000;
-//     journeyTimeString: string = '';
-//     arrivalTime: number = new Date((this.departureTime + this.journeyTime)).getTime();
-//     arrivalDateString: string = '';
-//     returnDate?: number = new Date().getTime();
-//     returnDateString?: string;
-//     // travellers: TravellerModel = new TravellerModel();
-//     class: Array<seatingClass> = [{
-//         'id': 'economy',
-//         'name': 'Economy'
-//     }, {
-//         'id': 'first_class',
-//         'name':  'First Class'
-//     }];
-//     availableSeatsCount: number = 100;
-//     journeyDuration: string = '14h 20m';
-//     HaultNumbers: number = 0;
-//     haultDetails: Array<HaultModel> = new Array<HaultModel>(); 
-//     // priceList: Array<pricingModel> = [{
-//     //     classId: 'economy',
-//     //     className: 'Economy',
-//     //     amount: 3500,
-//     //     currency: 'Rs',
-//     //     seatAvailable: 20
-//     // }, {
-//     //     classId: 'first_class',
-//     //     className: 'Premium',
-//     //     amount: 15000,
-//     //     currency: 'Rs',
-//     //     seatAvailable: 20
-//     // }];
-//     priceMap = {
-//         economy: {
-//             classId: 'economy',
-//             className: 'Economy',
-//             amount: 3500,
-//             currency: 'Rs',
-//             seatAvailable: 20
-//         }, 
-//         premium: {
-//             classId: 'premium',
-//             className: 'Premium',
-//             amount: 15000,
-//             currency: 'Rs',
-//             seatAvailable: 40
-//     }};
-// }
 export class FlightDetailModel {
     name: string;
     id: string;
@@ -80,19 +17,6 @@ export class FlightDetailModel {
     journeyDuration: string;
     HaultNumbers: number;
     haultDetails: Array<HaultModel>;
-    // priceList: Array<pricingModel> = [{
-    //     classId: 'economy',
-    //     className: 'Economy',
-    //     amount: 3500,
-    //     currency: 'Rs',
-    //     seatAvailable: 20
-    // }, {
-    //     classId: 'first_class',
-    //     className: 'Premium',
-    //     amount: 15000,
-    //     currency: 'Rs',
-    //     seatAvailable: 20
-    // }];
     priceMap = {
         economy: {
             classId: 'economy',
@@ -118,6 +42,7 @@ export interface DepartureModel {
 
 export class TravellerModel {
     adult: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    //      --To  Do (Improvement)
     // child: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     // infant: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 }

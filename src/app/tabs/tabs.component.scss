@@ -1,8 +1,16 @@
-// Helper class
-.full-flex {
-    flex: 0 1 100%;
+@import './../common-scss/_variable.scss';
+@import './../common-scss/_common.scss';
+.tab-wrapper {
+    width: 90%;
+    margin: 4rem auto;
+    padding: 2rem;
+    border: 1px solid $border-color;
+    border-radius: 2rem;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column;
 }
-// Helper class
 
 @media only screen and (max-width: 768px) and (orientation : portrait) {
     .tab-wrapper {
@@ -11,16 +19,4 @@
         border-radius: 0;
         margin-top: 0;
     }
-}
-
-.tab-wrapper {
-    width: 90%;
-    margin: 28px auto;
-    padding: 14px;
-    border: 1px solid #eeeeee;
-    border-radius: 14px;
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    flex-flow: column;
 }

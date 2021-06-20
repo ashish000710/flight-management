@@ -15,3 +15,16 @@
 .slider-wrapper {
     padding: 1rem 0;
 }
+
+.price-container {
+    position: relative;
+    margin-bottom: 2rem;
+    .price-label-container {
+        @include overlay-label;
+        top: -0.7rem;
+        left: 1rem;
+    }
+    .form-control {
+        padding: 0.6rem 0.75rem;
+    }
+}

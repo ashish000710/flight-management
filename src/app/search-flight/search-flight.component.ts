@@ -32,15 +32,6 @@ export class SearchFlightComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeSearchParams();
-
-    // this.flightSearchForm = this.fb.group({
-    //   departure: [this.selectedDepartureObj.value, Validators.required],
-    //   destination: [this.selectedDestinationObj.value, Validators.required],
-    //   departureDate: [new Date(), Validators.required],
-    //   returnDate: [''],
-    //   travellers: [this.selectedTravellerObj.value, [Validators.required]],
-    //   class: [this.selectedClassObj.value, Validators.required]
-    // });
     this.flightSearchForm = this.fb.group({
       departure: [this.selectedDepartureObj],
       destination: [this.selectedDestinationObj],
@@ -49,14 +40,6 @@ export class SearchFlightComponent implements OnInit {
       travellers: [this.selectedTravellerObj],
       class: [this.selectedClassObj]
     }, {validator: commonValidator});
-    
-    this.flightSearchForm.valueChanges.subscribe((value) => {
-      console.log('valueChanges form', value);
-    });
-
-    this.flightSearchForm.get('departureDate')?.valueChanges.subscribe((value) => {
-      console.log('valueChanges datepicker', value);
-    });
   }
 
   initializeSearchParams(): void {
@@ -84,17 +67,14 @@ export class SearchFlightComponent implements OnInit {
   }
 
   updateDepatureDate(event: any) {
-    console.log(event);
     this.departureDateObject = event;
   }
 
   updateReturnDate(event: any) {
     this.returnDateObject = event;
-    console.log(event);
   }
 
   onSubmit() {
-    console.log(this.flightSearchForm);
     if(!this.flightSearchForm.valid) {
       return;
     }
@@ -103,7 +83,6 @@ export class SearchFlightComponent implements OnInit {
       this.flightSearchParamObj[control] = this.flightSearchForm.controls[control].value;
     })
     this.flightSearchParamObj.travellers = this.flightSearchParamObj.travellers;
-    console.log(this.flightSearchParamObj);
     this.onFetchSearchParam.emit(this.flightSearchParamObj);
   }
   updateDepartureCity(event: SimpleDropdownItem) {

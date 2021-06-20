@@ -12,7 +12,6 @@ export class FlightSortComponent implements OnInit {
   @Input() flightList: Array<FlightDetailModel>;
   @Output() notifyOnSortSelection: EventEmitter<any> = new EventEmitter<any>();
   @Output() notifyOnBackButton: EventEmitter<any> = new EventEmitter<any>();
-  model = { options: '' };
   sortingOption: Array<SortingModel> = [{
     'id': 'price_increasing',
     'name': 'Price (Lowest to Highest)'
@@ -82,6 +81,7 @@ export class FlightSortComponent implements OnInit {
         break;
     }
     this.notifyOnSortSelection.emit(obj);
+    this.gotToFlightSection();
   }
 
   sortByName(sortProperty: string, order: string): void {
@@ -93,6 +93,7 @@ export class FlightSortComponent implements OnInit {
     })
 
   }
+  //            --To Do - Generic method for sort
   // sortByName(sortProperty: string, order: string, sortingValueType: string): void {
   //   const vm:{[key: string]: any} = this;
   //   const signForStringValueSort = order === 'ASC' ? '>' : '<';
@@ -109,7 +110,6 @@ export class FlightSortComponent implements OnInit {
   // }
 
   sortByPrice(order: string): void {
-    const sign = order === 'ASC' ? '>' : '<';
     this.flightList.sort((a, b): number  => {
       if(order === 'ASC') {
         return a.priceMap.economy.amount - b.priceMap.economy.amount;
@@ -120,7 +120,6 @@ export class FlightSortComponent implements OnInit {
   }
 
   sortByDuration(order: string): void {
-    const sign = order === 'ASC' ? '>' : '<';
     this.flightList.sort((a, b): number  => {
       if(order === 'ASC') {
         return a.journeyTime - b.journeyTime;
@@ -143,8 +142,7 @@ export class FlightSortComponent implements OnInit {
   }
 
   gotToFlightSection() {
-    this.notifyOnBackButton.emit(true);
-    // this.utilService.setValue(true);
+    this.notifyOnBackButton.emit(false);
   }
 
 }

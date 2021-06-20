@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Options } from '@angular-slider/ngx-slider';
 import { FlightDetailModel, FlightFilterModel, BookingClassDropdownModel } from '../model/flight-detail-model';
+import { UtilService } from '../service/util.service';
 
 @Component({
   selector: 'flight-filter',
@@ -9,12 +11,16 @@ import { FlightDetailModel, FlightFilterModel, BookingClassDropdownModel } from 
 })
 export class FlightFilterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private utilService: UtilService) {
+    this.isMobileDevice = this.utilService.checkIsMobileDevice();
+  }
   @Input() flightList: Array<FlightDetailModel>;
   @Input() flightListBackup: Array<FlightDetailModel>;
   @Output() notifyOnFilterSelection: EventEmitter<any> = new EventEmitter<any>();
-  // flightListBackup: Array<FlightDetailModel> = new Array<FlightDetailModel>();
+  @Output() notifyOnBackButton: EventEmitter<any> = new EventEmitter<any>();
+  isMobileDevice: boolean;
   value: number = 0;
+  faArrowLeft = faArrowLeft;
   highValue: number = 50000;
   options: Options = {
     floor: 0,
@@ -104,6 +110,10 @@ export class FlightFilterComponent implements OnInit {
       }
     }
     this.notifyOnFilterSelection.emit(this.flightList);
+    this.gotToFlightSection();
   }
 
+  gotToFlightSection() {
+    this.notifyOnBackButton.emit(false);
+  }
 }

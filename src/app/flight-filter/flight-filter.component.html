@@ -1,24 +1,31 @@
 <div class="highlight-card">
-    <h4>Filter Options</h4>
-    <div class="price-range-wrapper">
+    <div class="header-section">
+        <fa-icon class="left-arrow" *ngIf="isMobileDevice" [icon]="faArrowLeft" (click)="gotToFlightSection()"></fa-icon>
+        Filter By
+    </div>
+    <div class="filter-container price-range-wrapper">
         <label class="filter-label">Price range</label>
         <div class="filter-container">
             <div class="price-container">
-                <label class="min-price-label">minimum price</label>
-                <label class="currency-details">Rs</label>
-                <input type="text" [(ngModel)]="value"/>
+                <div class="price-label-container">
+                    <label class="min-price-label">minimum price</label>
+                    <label class="currency-details">Rs</label>
+                </div>
+                <input class="form-control" type="text" [(ngModel)]="value"/>
             </div>
             <div class="price-container">
-                <label class="min-price-label">maximum price</label>
-                <label class="currency-details">Rs</label>
-                <input type="text" [(ngModel)]="highValue"/>
+                <div class="price-label-container">
+                    <label class="min-price-label">maximum price</label>
+                    <label class="currency-details">Rs</label>
+                </div>
+                <input class="form-control" type="text" [(ngModel)]="highValue"/>
             </div>
             <div class="slider-wrapper">
                 <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ngx-slider>
             </div>
         </div>
     </div>
-    <div class="booking-filter-wrapper">
+    <div class="filter-container booking-filter-wrapper">
         <label class="filter-label">Booking class</label>
         <div class="sort-container" *ngFor="let bookingClass of bookingFilterArray, let i = index;">
         <input type="checkbox" [checked]="bookingClass.isSelected" (change)="updateBookingClassFilter($event, bookingClass, i)"/>
@@ -26,7 +33,7 @@
         <span class="input-label-details currency-details">{{bookingClass.currency}} {{bookingClass.amount}}</span>
         </div>
     </div>
-    <div class="filter-btn-wrapper">
+    <div class="filter-container filter-btn-wrapper">
         <button type="button" class="btn-details reset-btn" (click)="resetFilter()">Reset All</button>
         <button type="button" class="btn-details apply-btn" (click)="applyFilter()">Apply</button>
     </div>

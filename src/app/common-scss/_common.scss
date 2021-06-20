@@ -1,5 +1,20 @@
 @import './_variable.scss';
 
+.full-width {
+    display: block;
+    width: 100%;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.disabled {
+    pointer-events: none;
+    background: $dark-grey;
+    cursor: not-allowed;
+}
+
 .vertically-middle {
     display: inline-block;
     vertical-align: middle;
@@ -7,17 +22,26 @@
 .input-label-details {
     padding-left: 0.5rem;
 }
-@mixin capsule-btn() {
+@mixin app-btn() {
     padding: 0.5rem 1rem;
-    border: 1px solid #eaeaea;
-    border-radius: 21px;
-    background: #3C883F;
-    color: #ffffff;
+    border: 1px solid $border-color;
+    border-radius: 0.5rem;
+    background: $button-green;
+    color: $white;
+}
+
+@mixin overlay-label() {
+    position: absolute;
+    top: 0.2rem;
+    background: $white;
+    padding: 1px 2px;
+    z-index: 1;
+    left: 2rem;
 }
 .btn.btn-primary {
     background: none;
-    border-color: #0d6efd;
-    color: #0d6efd;
+    border-color: $button-blue;
+    color: $button-blue;
 }
 .invalid-feedback {
     display: flex;
@@ -28,10 +52,10 @@
     justify-content: center;
     button {
         padding: 1rem;
-        border: 1px solid grey;
+        border: 1px solid $border-color;
         border-radius: 0.5rem;
-        background: #3C883F;
-        color: #ffffff;
+        background: $button-green;
+        color: $white;
     }
 }
 
@@ -47,23 +71,23 @@
 .highlight-card {
     display: flex;
     flex-flow: column wrap;
-    background: #fff;
-    padding: 0.5rem 1rem;
+    background: $white;
+    padding: 0;
     margin-bottom: 1rem;
-    .booking-filter-wrapper {
-        padding: 1rem 0;
+    .filter-container {
+        padding: 1rem 0.5rem;
     }
     .filter-btn-wrapper {
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-end;
         .btn-details {
-            @include capsule-btn;
+            @include app-btn;
             display: inline-flex;
             margin-right: 1rem;
             &.reset-btn {
                 margin-right: 1rem;
-                background: #d0d0d0;    //non-highlight button grey color
+                background: $btn-grey;
             }
         }
     }
@@ -75,4 +99,34 @@
     border-top: 1px solid $border-color;
     width: 100%;
     font-weight: 500;
+}
+
+.header-section {
+    height: 70px;
+    display: flex;
+    background: $card-blue;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    color: $white;
+    position: relative;
+    fa-icon {
+        padding: 0 0.5rem;
+    }
+}
+
+.full-flex {
+    flex: 0 1 100%;
+}
+
+@media only screen and (max-width: 768px) and (orientation : portrait) {
+    .header-section {
+        justify-content: center;
+        .left-arrow {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
 }

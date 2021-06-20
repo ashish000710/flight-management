@@ -1,0 +1,47 @@
+// .sort-input-container {
+//     width: 16px;
+//     height: 16px;
+//     background: #ffffff;
+//     border: solid 0.1rem #c5c5c5;
+//     position: relative;
+//     top: 0.2rem;
+//     display: inline-block;
+//     margin: 0 0.5rem 0 0.1rem;
+//     padding: 0;
+//     line-height: 0;
+//     vertical-align: top;
+//     input {
+//         display: none;
+//     }
+//     label {
+//         &::after {
+//             content: "";
+//             display: block;
+//             position: absolute;
+//             height: 10px;
+//             width: 10px;
+//             background-color: transparent;
+//             left: 50%;
+//             top: 50%;
+//             border: 0;
+//             transform: translate(-50%, -50%);
+//             border-radius: 100px;
+//         }
+//         &.checked {
+//             background-color: #78808e;
+//         }
+//     }
+// }
+@import './../common-scss/_variable.scss';
+@import './../common-scss/_common.scss';
+.sort-button-container {
+    @extend .filter-btn-wrapper;
+}
+
+.sort-container {
+    padding: 0.5rem 0.2rem;
+    position: relative;
+    .sort-name-details {
+        @extend .input-label-details;
+    }
+}

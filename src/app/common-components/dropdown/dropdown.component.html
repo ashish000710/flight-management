@@ -1,0 +1,14 @@
+<div class="btn-group" dropdown>
+    <a *ngIf="!selectedData" href="#" dropdownToggle class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+        {{label}} <span class="caret"></span>
+    </a>
+    <a *ngIf="selectedData" href="#" dropdownToggle class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+        {{showValue ? selectedData.value: ''}} {{selectedData?.name}} <span class="caret"></span>
+    </a>
+    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+        role="menu" aria-labelledby="button-basic">
+        <li role="menuitem" *ngFor="let item of dropdownData.list">
+            <a class="dropdown-item" href="#" (click)="emitSelectedValue(item)">{{showValue ? item.value: ''}} {{item.name}} </a>
+        </li>
+    </ul>
+</div>

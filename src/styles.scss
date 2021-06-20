@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import './../node_modules/ngx-bootstrap/tabs/tabs.css';
+@import './app/common-scss/_variable.scss';
+@import './app/common-scss/_common.scss';
+@import './app/app.component.scss';
+@import './app/tabs/tabs.component.scss';
+@import './app/search-flight/search-flight.component.scss';
+@import './app/flight-sort/flight-sort.component.scss';

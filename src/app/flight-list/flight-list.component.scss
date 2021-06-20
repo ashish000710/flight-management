@@ -1,0 +1,193 @@
+@import './../common-scss/_variable.scss';
+@import './../common-scss/_common.scss';
+
+.flight-section {
+    display: flex;
+    flex-flow: row wrap;
+    padding-top: 5rem;
+    background: $beige;
+}
+.left-panel {
+    flex: 0 1 30%;
+    padding: 1rem 2rem;
+    // .highlight-card {
+    //     display: flex;
+    //     flex-flow: column wrap;
+    //     background: #fff;
+    //     padding: 0.5rem 1rem;
+    //     margin-bottom: 1rem;
+    //     .booking-filter-wrapper {
+    //         margin-top: 2rem;
+    //         border-top: 1px solid #eaeaea;
+    //         padding: 1rem 0;
+    //     }
+    //     .filter-btn-wrapper {
+    //         display: flex;
+    //         flex-flow: row wrap;
+    //         justify-content: flex-end;
+    //         .btn-details {
+    //             @include capsule-btn;
+    //             display: inline-flex;
+    //             margin-right: 1rem;
+    //             &.reset-btn {
+    //                 margin-right: 1rem;
+    //                 background: #d0d0d0;    //non-highlight button grey color
+    //             }
+    //         }
+    //     }
+    // }
+    // .sort-container {
+    //     padding: 0.5rem 0.2rem;
+    //     .sort-name-details {
+    //         @extend .input-label-details;
+    //     }
+    // }
+}
+.right-panel {
+    flex: 0 1 70%;
+    padding: 1rem 2rem;
+    // border: 1px solid #eaeaea;
+}
+
+.hault-wrapper {
+    display: flex;
+    align-items: center;
+    .hault-container {
+        display: inline-flex;
+        align-items: center;
+    }
+}
+
+.dots {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: $red;
+}
+.line {
+    width: 1.5rem;
+    border-top: 1px solid $red;
+}
+
+.flight-header-section{
+    height: 70px;
+    display: flex;
+    background: $card-blue;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    color: $white;
+    fa-icon {
+        padding: 0 0.5rem;;
+    }
+}
+
+.flight-list-section {
+    display: flex;
+    flex-flow: row wrap;    //Convert this in mixin
+    .flight-list-wrapper {
+        box-shadow: 0 0 4px 0 rgb(0 0 0 / 10%);
+        background: $white;
+        margin-bottom: 7px;
+        padding: 14px;
+        flex: 0 1 100%;
+        .flight-heading-container {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: flex-start;    //Convert this in mixin
+            .flight-logo-details {
+                @extend .vertically-middle;
+                padding-right: 14px;
+            }
+            .flight-name-details {
+                @extend .vertically-middle;
+                font-weight: bold;
+            }
+        }
+        .flight-details-container {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            text-align: center;
+            .inner-flex {
+                flex: 0 1 auto;
+            }
+            .departure-time-section, .return-time-section {
+                .time-details {
+                    margin-bottom: 7px;
+                }
+            }
+            .flight-stops-section {
+                .flight-journey-time {
+                    margin-bottom: 7px;
+                }
+            }
+        }
+        .flight-pricing-section {
+            display: flex;
+            flex-flow: row nowrap;
+            padding-top: 14px;
+            .pricing-card {
+                flex: 0 1 10rem;
+                position: relative;
+                background: $card-blue;
+                padding: 7px;
+                border-radius: 5px;
+                margin-right: 7px;
+                color: $white;
+                .price-details {
+                    margin-bottom: 7px;
+                }
+            }
+            .availale-seats-tag {
+                position: absolute;
+                top: -8px;
+                right: 7px;
+                background: $tag-yellow;
+                color: $black;
+                padding: 2px 7px;
+                border-radius: 3px;
+            }
+        }
+    }
+    .no-data-wrapper {
+        flex: 0 1 100%;
+        .no-data-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 40rem;
+            fa-icon {
+                color: $dark-yellow;
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) and (orientation : portrait) {
+    .flight-section {
+        padding: 0;;
+    }
+    .left-panel, .right-panel {
+        flex: 0 1 100%;
+        padding: 0;
+    }
+    .mobile-filter-wrapper {
+        position: fixed;
+        bottom: 2rem;
+        display: flex;
+        flex-direction: row;
+        left: 50%;
+        transform: translateX(-50%);
+        .btn-details {
+            @include capsule-btn;
+            display: inline-flex;
+            &.reset-btn {
+                background: $btn-grey;    //non-highlight button grey color
+            }
+        }
+    }
+}

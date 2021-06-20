@@ -1,0 +1,24 @@
+<div>
+  <tabset>
+    <tab heading="Flight">
+      <div class="tab-wrapper">
+          <ng-container *ngIf="(!isMobileDevice || (isMobileDevice && !isFormSubmit))">
+            <search-flight (onFetchSearchParam)="fetchFlightList($event)"></search-flight>
+          </ng-container>
+          <!-- <ng-template #mobileView>
+            <search-flight (onFetchSearchParam)="fetchFlightList($event)"></search-flight>
+          </ng-template> -->
+          <flight-list *ngIf="showFlights && isFormSubmit" [searchParam]="searchParams" [flightList]="flightList"></flight-list>
+      </div>
+    </tab>
+    <tab heading="Hotels">
+        Hotel Content
+    </tab>
+    <tab heading="Cars">
+        Cab Content
+    </tab>
+    <tab heading="Alpha">
+        Other Content
+    </tab>
+  </tabset>
+</div>

@@ -1,0 +1,17 @@
+@import './../common-scss/_variable.scss';
+@import './../common-scss/_common.scss';
+.filter-btn-wrapper {
+    @extend .filter-btn-wrapper;
+}
+.sort-container {
+    .currency-details {
+        position: absolute;
+        right: 0%;
+    }
+}
+.filter-container {
+    padding: 1rem 0;
+}
+.slider-wrapper {
+    padding: 1rem 0;
+}

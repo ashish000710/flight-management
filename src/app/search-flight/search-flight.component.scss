@@ -1,0 +1,81 @@
+@import './../common-scss/_variable.scss';
+@import './../common-scss/_common.scss';
+@media only screen and (max-width: 768px) and (orientation : portrait) {
+    .search-param-wrapper {
+        width: 50%;
+        border: none;
+        &.airport-wrapper {
+            width: 100%;
+        }
+        .search-param-container {
+            label {
+                position: absolute;
+                top: 0.2rem;
+                background: #fff;
+                padding: 1px 2px;
+                z-index: 1;
+                left: 2rem;
+            }
+            dropdown {
+                width: 100%;
+                .btn-group {
+                    width: 100%;
+                    a {
+                        padding: 1rem 0;
+                        &.dropdown-toggle::after {
+                            position: absolute;
+                            top: 50%;
+                            right: 1rem;
+                        }
+                    }
+                }
+            }
+            calendar {
+                width: 100%;
+                input {
+                    padding: 1rem 0.75rem;
+                    border-color: #0d6efd;
+                }
+            }
+        }
+    }
+}
+
+.flight-search-section {
+    // width: 80%;
+    // margin: 0 auto;
+    // padding: 14px;
+    border: 1px solid #eeeeee;
+    border-radius: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem 0;
+}
+.search-param-wrapper {
+    display: inline-flex;
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    // border-right: 1px solid #eeeeee;
+    
+    .search-param-container {
+        display: flex;
+        flex: 0 1 100%;
+        padding: 1rem;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-content: center;
+        position: relative;
+    }
+}
+.submit-btn-container {
+    @extend .app-btn-wrapper;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

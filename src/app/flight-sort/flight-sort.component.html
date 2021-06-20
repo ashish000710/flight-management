@@ -1,0 +1,14 @@
+<div class="highlight-card">
+    <div class="flight-header-section">
+        <fa-icon *ngIf="isMobileDevice" [icon]="faArrowLeft" (click)="gotToFlightSection()"></fa-icon>
+        Sort By
+      </div>
+    <h4>Sort Section</h4>
+    <div class="sort-container" *ngFor="let sort of sortingOption; let i = index;">
+        <input type="radio" name="sortOption" (click)="sortBySelectedValue($event, sort)" [checked]="selectedSorting.id === sort.id"/>
+        {{sort.name}}
+    </div>
+    <div class="sort-button-container">
+        <button type="button" (click)="selectSort()">Done</button>
+    </div>
+</div>

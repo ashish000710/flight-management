@@ -1,0 +1,55 @@
+<div class="flight-search-section">
+    <form [formGroup]="flightSearchForm" (ngSubmit)="onSubmit()">
+        <div class="search-param-wrapper airport-wrapper">
+            <div class="search-param-container">
+                <label for="departure">Departure </label>
+                <dropdown [showValue]="true" [formControlName]="'departure'" [dropdownData]="departureDropDownObject" [selectedData]="selectedDepartureObj" (onDataSelect)="updateDepartureCity($event)"></dropdown>
+            </div>
+        </div>
+    
+        <div class="search-param-wrapper airport-wrapper">
+            <div class="search-param-container">
+                <label for="destination">Destination </label>
+                <dropdown [showValue]="true" [formControlName]="'destination'" [dropdownData]="destinationDropDownObject" [selectedData]="selectedDestinationObj" (onDataSelect)="updateDestinationCity($event)"></dropdown>
+                <div *ngIf="form.destination.errors" class="invalid-feedback">
+                    <div *ngIf="form.destination.errors.destinationValidator">Destination should be different from source.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-param-wrapper">
+            <div class="search-param-container">
+                <calendar [fieldLabel]="'Departure Date'" [minDateAllowed]="currentDate" [fieldId]="'departureDate'" [formControlName]="'departureDate'" [dateObject]="departureDateObject" (notifyOnDateChange)="updateDepatureDate($event)"></calendar>
+                <div *ngIf="form.departureDate.errors" class="invalid-feedback">
+                    <div *ngIf="form.departureDate.errors.required">Departure Date is required</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-param-wrapper">
+            <div class="search-param-container">
+                <calendar [fieldLabel]="'Return Date'" [minDateAllowed]="departureDateObject" [fieldId]="'returnDate'" [formControlName]="'returnDate'" [dateObject]="returnDateObject" (notifyOnDateChange)="updateReturnDate($event)"></calendar>
+                <div *ngIf="form.returnDate.errors" class="invalid-feedback">
+                    <div *ngIf="form.returnDate.errors.samereturnDate">Return Date should be ahead of departure date</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-param-wrapper">
+            <div class="search-param-container">
+                <label for="destination">Travellers </label>
+                <dropdown [formControlName]="'travellers'" [label]="'Select travellers'" [dropdownData]="travellersDropDownObject" [selectedData]="selectedTravellerObj" (onDataSelect)="updateTravellerCount($event)"></dropdown>
+            </div>
+        </div>
+
+        <div class="search-param-wrapper">
+            <div class="search-param-container">
+                <label for="destination">class </label>
+                <dropdown [formControlName]="'class'" [label]="'Select class'" [dropdownData]="classDropDownObject" [selectedData]="selectedClassObj" (onDataSelect)="updateClass($event)"></dropdown>
+            </div>
+        </div>
+        <div class="submit-btn-container">
+            <button type="button" (click)="onSubmit()">Search Flights</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,157 @@
+
+<div class="flight-section">
+  <div class="left-panel" *ngIf="!isMobileDevice">
+    <!-- <div class="highlight-card">
+      <h1>Sort Section</h1>
+      <div class="sort-container" *ngFor="let sort of sortingOption">
+        <input type="radio" name="sortOption" (click)="sortBySelectedValue(sort)" [checked]="selectedSorting.id === sort.id"/>
+        <label for="sortOption" class="input-label-details">{{sort.name}}</label>
+      </div>
+    </div> -->
+    <flight-sort class="highlight-card" [flightList]="flightList" (notifyOnSortSelection)="sortFlightBySelectedParam($event)"></flight-sort>
+    <flight-filter class="highlight-card" [flightList]="flightList" [flightListBackup]="flightListBackup" (notifyOnFilterSelection)="filterFlight($event)"></flight-filter>
+  <!-- <div class="highlight-card">
+      <h1>Filter Section</h1>
+      <div class="price-range-wrapper">
+        <div class="min-price-container">
+          <label class="min-price-label">minimum price</label>
+          <label class="currency-details">Rs</label>
+          <input type="text" [(ngModel)]="value"/>
+        </div>
+        <div class="min-price-container">
+          <label class="min-price-label">maximum price</label>
+          <label class="currency-details">Rs</label>
+          <input type="text" [(ngModel)]="highValue"/>
+        </div>
+        <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ngx-slider>
+      </div>
+      <div class="booking-filter-wrapper">
+        <div class="sort-container" *ngFor="let bookingClass of bookingFilterArray">
+          <input type="checkbox" [value]="bookingClass.classId" (change)="updateBookingClassFilter($event, bookingClass)"/>
+          <label class="input-label-details">{{bookingClass.className}} ({{bookingClass.seatAvailable}})</label>
+          <span class="input-label-details">{{bookingClass.currency}}</span>
+        </div>
+      </div>
+      <div class="filter-btn-wrapper">
+        <button type="button" class="btn-details reset-btn" (click)="resetFilter()">Reset All</button>
+      <button type="button" class="btn-details apply-btn" (click)="applyFilter()">Apply</button>
+      </div>
+  </div> -->
+  </div>
+  <div class="right-panel">
+    <div class="flight-header-section">
+      <fa-icon *ngIf="isMobileDevice" [icon]="faArrowLeft" (click)="gotToSearchPage()"></fa-icon>
+      {{searchParam.departure.value}} <fa-icon [icon]="faArrowRight"></fa-icon> {{searchParam.destination.value}} {{travelDate | date}}
+    </div>
+    <div class="flight-list-section" *ngIf="!showSortSectionOnMobile && !showFilterSectionOnMobile">
+      <ng-container *ngIf="flightList">
+        <div class="flight-list-wrapper" *ngFor="let flights of flightList">
+
+          <div class="flight-heading-container">
+            <div class="flight-logo-details">
+              <img width="40" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="/>
+            </div>
+            <div class="flight-name-details">
+              {{flights.name}}
+            </div>
+          </div>
+
+          <div class="flight-details-container">
+            <div class="inner-flex departure-time-section">
+              <p class="time-details">{{flights.departureDateString}}</p>
+              <p class="flight-code-details">{{flights.departure.code}}</p>
+            </div>
+            <div class="inner-flex flight-stops-section">          
+              <p class="flight-journey-time">{{flights.journeyTimeString}}</p>
+              <div class="hault-wrapper">
+                <div class="hault-container">
+                  <div class="dots"></div>
+                  <div class="line"></div>
+                </div>
+                <div class="hault-container" *ngFor="let haults of flights.haultDetails">
+                  <div class="dots"></div>
+                  <div class="line"></div>
+                </div>
+                <div class="hault-container">
+                  <div class="dots"></div>
+                </div>
+              </div>
+              <p>{{flights.HaultNumbers}}</p>
+            </div>
+            <div class="inner-flex return-time-section">
+              <p class="time-details">{{flights.arrivalDateString}}</p>
+              <p class="flight-code-details">{{flights.destination.code}}</p>
+            </div>
+          </div>
+
+          <div class="flight-pricing-section">
+            <div class="pricing-card" *ngFor="let price of flights.priceMap | keyvalue">
+              <div class="price-details">{{price.value.currency}} {{price.value.amount}} </div>
+              <div class="class-details">{{price.value.className}}</div>
+              <div class="availale-seats-tag" *ngIf="price.value.seatAvailable < 5">{{price.value.seatAvailable}} seats left</div>
+            </div>
+          </div>
+
+        </div>
+      </ng-container>
+      <div class="no-data-wrapper"  *ngIf="flightList && flightList?.length == 0">
+        <div class="no-data-container">
+          No flights found for searched queries.
+        <fa-icon [icon]="faFrown"></fa-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="left-panel" *ngIf="isMobileDevice">
+      <!-- <div class="highlight-card" *ngIf="showSortSectionOnMobile">
+          <h1>Sort Section</h1>
+          <div class="sort-container" *ngFor="let sort of sortingOption">
+            !!!{{selectedSorting.id === sort.id}}
+            <input type="radio" name="sortOption" value="{{sort.id}}" (click)="sortBySelectedValue(sort)" [checked]="selectedSorting === sort"/>
+            <label for="sortOption" class="input-label-details">{{sort.name}}</label>
+          </div>
+          <input type="radio" value="alpha"/>
+          alpha
+      </div> -->
+      showSortSectionOnMobile: {{showSortSectionOnMobile}}
+      showFilterSectionOnMobile: {{showFilterSectionOnMobile}}
+      <flight-sort *ngIf="showSortSectionOnMobile" [flightList]="flightList" (notifyOnSortSelection)="sortFlightBySelectedParam($event)" (notifyOnBackButton)="showSortPage($event)"></flight-sort>
+      <flight-filter *ngIf="showFilterSectionOnMobile" [flightList]="flightList" [flightListBackup]="flightListBackup" (notifyOnFilterSelection)="filterFlight($event)"></flight-filter>
+      <!-- <div class="highlight-card" *ngIf="showFilterSectionOnMobile">
+          <h1>Filter Section</h1>
+          <div class="price-range-wrapper">
+            <div class="min-price-container">
+              <label class="min-price-label">minimum price</label>
+              <label class="currency-details">Rs</label>
+              <input type="text" [(ngModel)]="value"/>
+            </div>
+            <div class="min-price-container">
+              <label class="min-price-label">maximum price</label>
+              <label class="currency-details">Rs</label>
+              <input type="text" [(ngModel)]="highValue"/>
+            </div>
+            <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ngx-slider>
+          </div>
+          <div class="booking-filter-wrapper">
+            <div class="sort-container" *ngFor="let bookingClass of bookingFilterArray">
+              <input type="checkbox" [value]="bookingClass.classId" (change)="updateBookingClassFilter($event, bookingClass)"/>
+              <label class="input-label-details">{{bookingClass.className}} ({{bookingClass.seatAvailable}})</label>
+              <span class="input-label-details">{{bookingClass.currency}}</span>
+            </div>
+          </div>
+          <div class="filter-btn-wrapper">
+            <button type="button" class="btn-details reset-btn" (click)="resetFilter()">Reset All</button>
+          <button type="button" class="btn-details apply-btn" (click)="applyFilter()">Apply</button>
+          </div>
+      </div> -->
+    </div>
+
+    <div class="mobile-filter-wrapper" *ngIf="isMobileDevice">
+      <ng-container *ngIf="!showSortSectionOnMobile && !showFilterSectionOnMobile">
+        <button type="button" class="btn-details reset-btn" (click)="showSortFlightSectionOnMobile()">Sort By</button>
+        <button type="button" class="btn-details apply-btn" (click)="showFilterFlightSectionOnMobile()">Filters</button>
+      </ng-container>
+    </div>
+
+  </div>
+</div>

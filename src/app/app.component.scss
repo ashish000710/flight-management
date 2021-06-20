@@ -1,0 +1,177 @@
+// .flight-list-wrapper {
+//     display: flex;
+//     margin: 82px auto 32px;
+//     padding: 0 16px;
+//     max-width: 960px;
+//     flex-direction: row;
+//     align-items: center;
+//     .flight-list-container {
+
+//     }
+// }
+// .flight-name-details {
+//     padding-left: 14px;
+// }
+$card-blue: #165AA1;
+$white: #ffffff;
+$tag-yellow: #EA9C3D;
+$black: #000000;
+body {
+    font-size: 12px;
+    font-weight: 400;
+    color: #4a4a4a;
+    line-height: inherit;
+    margin: 0;
+    // background: #c3e9f4 0 0;
+    background: #c3e9f4;
+    height: auto;
+    p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+// .flight-list-section {
+//     min-height: 100vh;
+//     height: inherit;
+//     display: flex;
+//     flex: 1;
+//     flex-direction: column;
+//     overflow: hidden;
+//     margin-top: 100px;
+//     .flight-list-wrapper {
+//         margin: 10px;
+//         .flight-list-container {
+//             width: 95%;
+//             background-color: #fff;
+//             border-radius: 7px;
+//             box-shadow: 0 0 4px 0 rgb(0 0 0 / 10%);
+//             position: relative;
+//             margin-left: auto;
+//             margin-right: auto;
+//             .flight-details-section{
+//                 padding: 12px;
+//                 .flight-heading-section {
+//                     margin-bottom: 10x;
+//                     display: flex;
+//                     flex: 1 1 0%;
+//                     justify-content: space-between;
+//                     align-items: flex-start;
+//                     .flight-heading-container {
+                        
+
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+// Helper classes
+.full-width {
+    display: block;
+    width: 100%;
+}
+.vertically-middle {
+    display: inline-block;
+    vertical-align: middle;
+}
+.center-text {
+    text-align: center;
+}
+
+.disabled {
+    pointer-events: none;
+    background: gray;
+    cursor: not-allowed;
+}
+// Helper classes ends
+
+// .flight-header-section{
+//     height: 70px;
+//     display: flex;
+//     background: $card-blue;
+//     align-items: center;
+//     justify-content: flex-start;
+//     padding: 1rem;
+//     color: #fff;
+//     margin-bottom: 1rem;
+//     fa-icon {
+//         padding: 0 0.5rem;;
+//     }
+// }
+
+// .flight-list-section {
+//     // @extend .full-width;
+//     display: flex;
+//     flex-flow: row wrap;    //Convert this in mixin
+//     .flight-list-wrapper {
+//         box-shadow: 0 0 4px 0 rgb(0 0 0 / 10%);
+//         background: $white;
+//         margin-bottom: 7px;
+//         padding: 14px;
+//         flex: 0 1 100%;
+//         .flight-heading-container {
+//             @extend .full-width;
+//             .flight-logo-details {
+//                 @extend .vertically-middle;
+//                 padding-right: 14px;
+//             }
+//             .flight-name-details {
+//                 @extend .vertically-middle;
+//                 font-weight: bold;
+//             }
+//         }
+//         .flight-details-container {
+//             // @extend .full-width;
+//             display: flex;
+//             flex-flow: row wrap;
+//             .departure-time-section, .return-time-section {
+//                 display: inline-block;
+//                 width: 25%;
+//                 text-align: left;
+//                 .time-details {
+//                     margin-bottom: 7px;
+//                 }
+//             }
+//             .return-time-section {
+//                 text-align: right;
+//             }
+//             .flight-stops-section {
+//                 width: 50%;
+//                 display: inline-block;
+//                 @extend .center-text;
+//                 .flight-journey-time {
+//                     margin-bottom: 7px;
+//                 }
+//             }
+//         }
+//         .flight-pricing-section {
+//             @extend .full-width;
+//             padding-top: 14px;
+//             .pricing-card {
+//                 position: relative;
+//                 display: inline-block;
+//                 width: 33%;
+//                 background: $card-blue;
+//                 padding: 7px;
+//                 border-radius: 5px;
+//                 margin-right: 7px;
+//                 color: $white;
+//                 .price-details {
+//                     margin-bottom: 7px;
+//                 }
+//             }
+//             .availale-seats-tag {
+//                 position: absolute;
+//                 top: -8px;
+//                 right: 7px;
+//                 background: $tag-yellow;
+//                 color: $black;
+//                 padding: 2px 7px;
+//                 border-radius: 3px;
+//             }
+//         }
+//     }
+// }

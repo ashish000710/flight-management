@@ -1,0 +1,78 @@
+@import './_variable.scss';
+
+.vertically-middle {
+    display: inline-block;
+    vertical-align: middle;
+}
+.input-label-details {
+    padding-left: 0.5rem;
+}
+@mixin capsule-btn() {
+    padding: 0.5rem 1rem;
+    border: 1px solid #eaeaea;
+    border-radius: 21px;
+    background: #3C883F;
+    color: #ffffff;
+}
+.btn.btn-primary {
+    background: none;
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+.invalid-feedback {
+    display: flex;
+}
+.app-btn-wrapper {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    button {
+        padding: 1rem;
+        border: 1px solid grey;
+        border-radius: 0.5rem;
+        background: #3C883F;
+        color: #ffffff;
+    }
+}
+
+.filter-btn-wrapper {
+    @extend .app-btn-wrapper;
+    justify-content: flex-end;
+    button {
+        padding: 0.3rem 1rem;
+        margin-right: 0.5rem;
+    }
+}
+
+.highlight-card {
+    display: flex;
+    flex-flow: column wrap;
+    background: #fff;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    .booking-filter-wrapper {
+        padding: 1rem 0;
+    }
+    .filter-btn-wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+        .btn-details {
+            @include capsule-btn;
+            display: inline-flex;
+            margin-right: 1rem;
+            &.reset-btn {
+                margin-right: 1rem;
+                background: #d0d0d0;    //non-highlight button grey color
+            }
+        }
+    }
+}
+
+.filter-label {
+    padding: 1rem 0;
+    border-bottom: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+    width: 100%;
+    font-weight: 500;
+}

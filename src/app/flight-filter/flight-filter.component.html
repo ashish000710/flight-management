@@ -28,7 +28,7 @@
     <div class="filter-container booking-filter-wrapper">
         <label class="filter-label">Booking class</label>
         <div class="sort-container" *ngFor="let bookingClass of bookingFilterArray, let i = index;">
-        <input type="checkbox" [checked]="bookingClass.isSelected" (change)="updateBookingClassFilter($event, bookingClass, i)"/>
+        <input type="checkbox" id="checkbox" [checked]="bookingClass.isSelected" (change)="updateBookingClassFilter($event, bookingClass, i)"/>
         <label class="input-label-details">{{bookingClass.className}} ({{bookingClass.seatAvailable}})</label>
         <span class="input-label-details currency-details">{{bookingClass.currency}} {{bookingClass.amount}}</span>
         </div>

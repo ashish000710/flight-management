@@ -48,12 +48,9 @@ export class FlightFilterComponent implements OnInit {
   flightFilterObject: FlightFilterModel = new FlightFilterModel();
 
   ngOnInit(): void {
-    this.flightListBackup
   }
 
   updateBookingClassFilter(event: any, elem: BookingClassDropdownModel, index: number) {
-    console.log(event);
-    console.log(elem);
     if(this.flightFilterObject && this.flightFilterObject.bookingClass) {
       if(event.target.checked) {
         this.bookingFilterArray[index].isSelected = true;
@@ -90,7 +87,6 @@ export class FlightFilterComponent implements OnInit {
           return elem.priceMap[bookingClass].seatAvailable > 0;
         });
       });
-      console.log(this.flightList);
       if(this.flightFilterObject.minPrice >= 0 && this.flightFilterObject.maxPrice >= 0) {
         let flightListArr = this.flightList.filter((elem: FlightDetailModel)=> {
           return elem.priceMap.economy.amount >= this.flightFilterObject.minPrice;

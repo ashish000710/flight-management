@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'flight-management-app';
   
-  constructor() {
+  constructor(private translate: TranslateService) {
+    translate.setDefaultLang('en');
   }
 
   ngOnInit() {

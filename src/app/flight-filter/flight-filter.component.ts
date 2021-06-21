@@ -3,6 +3,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Options } from '@angular-slider/ngx-slider';
 import { FlightDetailModel, FlightFilterModel, BookingClassDropdownModel } from '../model/flight-detail-model';
 import { UtilService } from '../service/util.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'flight-filter',
@@ -11,7 +12,7 @@ import { UtilService } from '../service/util.service';
 })
 export class FlightFilterComponent implements OnInit {
 
-  constructor(private utilService: UtilService) {
+  constructor(private utilService: UtilService, private translate: TranslateService) {
     this.isMobileDevice = this.utilService.checkIsMobileDevice();
   }
   @Input() flightList: Array<FlightDetailModel>;

@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, forwardRef, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { UtilService } from 'src/app/service/util.service';
 
 @Component({
@@ -25,7 +26,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit {
   @Input() dateObject: Date;
   @Input() minDateAllowed: Date; 
   @Output() notifyOnDateChange: EventEmitter<any> = new EventEmitter();
-  constructor(private datePipe: DatePipe, private utilService: UtilService) { }
+  constructor(private datePipe: DatePipe, private utilService: UtilService, private translate: TranslateService) { }
 
   ngOnInit(): void {
   }

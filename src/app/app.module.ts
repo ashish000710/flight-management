@@ -18,6 +18,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlightSortComponent } from './flight-sort/flight-sort.component';
 import { FlightFilterComponent } from './flight-filter/flight-filter.component';
 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +47,15 @@ import { FlightFilterComponent } from './flight-filter/flight-filter.component';
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

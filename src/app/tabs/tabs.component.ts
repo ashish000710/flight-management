@@ -3,6 +3,7 @@ import { FlightService } from '../service/flight.service';
 import { UtilService } from './../service/util.service';
 import { FlightDetailModel, FlightSearchModel, ITab } from './../model/flight-detail-model';
 import { Subscriber, Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'tabs',
   templateUrl: './tabs.component.html',
@@ -18,7 +19,8 @@ export class TabsComponent implements OnInit {
   isMobileDevice: boolean = false;
 
   constructor(private flightService: FlightService,
-    private utilService: UtilService) {
+    private utilService: UtilService,
+    private translate: TranslateService) {
       this.isMobileDevice = this.utilService.checkIsMobileDevice();
       this.subscription = this.utilService.subject.subscribe(result => { 
         this.isFormSubmit = result.val;

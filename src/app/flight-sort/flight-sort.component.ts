@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { TranslateService } from '@ngx-translate/core';
 import { FlightDetailModel, SortingModel } from '../model/flight-detail-model';
 import { UtilService } from '../service/util.service';
 
@@ -14,34 +15,35 @@ export class FlightSortComponent implements OnInit {
   @Output() notifyOnBackButton: EventEmitter<any> = new EventEmitter<any>();
   sortingOption: Array<SortingModel> = [{
     'id': 'price_increasing',
-    'name': 'Price (Lowest to Highest)'
+    'name': this.translate.instant('sort.price.increasing')
   }, {
     'id': 'price_decreasing',
-    'name': 'Price (Highest to Lowest)'
+    'name': this.translate.instant('sort.price.decreasing')
   }, {
     'id': 'duration_shortest',
-    'name': 'Duration (Shortest to Longest)'
+    'name': this.translate.instant('sort.duration.increasing')
   }, {
     'id': 'duration_longest',
-    'name': 'Duration (Longest to Shortest)'
+    'name': this.translate.instant('sort.duration.decreasing')
   }, {
     'id': 'departure_time',
-    'name': 'Departure (Earliest to Latest)'
+    'name': this.translate.instant('sort.departure.time.increasing')
   }, {
     'id': 'arrival_time',
-    'name': 'Arrival (Earliest to Latest)'
+    'name': this.translate.instant('sort.arrival.time.increasing')
   }, {
     'id': 'name_increasing',
-    'name': 'Airline (A to Z)'
+    'name': this.translate.instant('sort.name.increasing')
   }, {
     'id': 'name_decreasing',
-    'name': 'Airline (Z to A)'
+    'name': this.translate.instant('sort.name.decreasing')
   }];
   selectedSorting:SortingModel = new SortingModel();
   isMobileDevice: boolean;
   faArrowLeft = faArrowLeft;
 
-  constructor(private utilService: UtilService) {
+  constructor(private utilService: UtilService,
+    private translate: TranslateService) {
     this.isMobileDevice = this.utilService.checkIsMobileDevice();
   }
 

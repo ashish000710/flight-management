@@ -1,21 +1,21 @@
 <div class="highlight-card">
     <div class="header-section">
         <fa-icon class="left-arrow" *ngIf="isMobileDevice" [icon]="faArrowLeft" (click)="gotToFlightSection()"></fa-icon>
-        Filter By
+            {{'filter.by.header' | translate}}
     </div>
     <div class="filter-container price-range-wrapper">
-        <label class="filter-label">Price range</label>
+        <label class="filter-label">{{'price.range.label' | translate}}</label>
         <div class="filter-container">
             <div class="price-container">
                 <div class="price-label-container">
-                    <label class="min-price-label">minimum price</label>
+                    <label class="min-price-label">{{'minimum.price.label' | translate}}</label>
                     <label class="currency-details">Rs</label>
                 </div>
                 <input class="form-control" type="text" [(ngModel)]="value"/>
             </div>
             <div class="price-container">
                 <div class="price-label-container">
-                    <label class="min-price-label">maximum price</label>
+                    <label class="min-price-label">{{'maximum.price.label' | translate}}</label>
                     <label class="currency-details">Rs</label>
                 </div>
                 <input class="form-control" type="text" [(ngModel)]="highValue"/>
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="filter-container booking-filter-wrapper">
-        <label class="filter-label">Booking class</label>
+        <label class="filter-label">{{'booking.class.label' | translate}}</label>
         <div class="sort-container" *ngFor="let bookingClass of bookingFilterArray, let i = index;">
         <input type="checkbox" id="checkbox" [checked]="bookingClass.isSelected" (change)="updateBookingClassFilter($event, bookingClass, i)"/>
         <label class="input-label-details">{{bookingClass.className}} ({{bookingClass.seatAvailable}})</label>
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="filter-container filter-btn-wrapper">
-        <button type="button" class="btn-details reset-btn" (click)="resetFilter()">Reset All</button>
-        <button type="button" class="btn-details apply-btn" (click)="applyFilter()">Apply</button>
+        <button type="button" class="btn-details reset-btn" (click)="resetFilter()">{{'reset.all.btn.label' | translate}}</button>
+        <button type="button" class="btn-details apply-btn" (click)="applyFilter()">{{'apply.btn.label' | translate}}</button>
     </div>
 </div>

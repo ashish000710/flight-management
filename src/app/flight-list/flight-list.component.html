@@ -62,7 +62,7 @@
       </ng-container>
       <div class="no-data-wrapper"  *ngIf="flightList && flightList?.length == 0">
         <div class="no-data-container">
-          No flights found for searched queries.
+          {{'no.flights.found.message' | translate}}
         <fa-icon [icon]="faFrown"></fa-icon>
         </div>
       </div>
@@ -75,8 +75,8 @@
 
     <div class="mobile-filter-wrapper" *ngIf="isMobileDevice">
       <ng-container *ngIf="!showSortSectionOnMobile && !showFilterSectionOnMobile">
-        <button type="button" class="btn-details reset-btn" (click)="showSortFlightSectionOnMobile()">Sort By</button>
-        <button type="button" class="btn-details apply-btn" (click)="showFilterFlightSectionOnMobile()">Filters</button>
+        <button type="button" class="btn-details reset-btn" (click)="showSortFlightSectionOnMobile()">{{'sort.by.btn.label' | translate}}</button>
+        <button type="button" class="btn-details apply-btn" (click)="showFilterFlightSectionOnMobile()">{{'filter.by.btn.label' | translate}}</button>
       </ng-container>
     </div>
   </div>

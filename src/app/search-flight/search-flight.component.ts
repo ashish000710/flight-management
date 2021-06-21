@@ -4,6 +4,7 @@ import { DropdownModel, FlightDetailModel, FlightSearchModel, SimpleDropdownItem
 import { commonValidator } from './../validation/validator';
 import { FlightService } from '../service/flight.service';
 import { UtilService } from './../service/util.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'search-flight',
@@ -28,7 +29,8 @@ export class SearchFlightComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private flightService: FlightService,
-    private utilService: UtilService) { }
+    private utilService: UtilService,
+    private translate: TranslateService) { }
 
   ngOnInit(): void {
     this.initializeSearchParams();

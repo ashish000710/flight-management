@@ -1,6 +1,6 @@
 <div>
   <tabset>
-    <tab heading="Flight">
+    <tab heading="{{'tab.flight.heading' | translate}}">
       <div class="tab-wrapper">
           <ng-container *ngIf="(!isMobileDevice || (isMobileDevice && !isFormSubmit))">
             <search-flight (onFetchSearchParam)="fetchFlightList($event)"></search-flight>
@@ -8,14 +8,14 @@
           <flight-list *ngIf="showFlights && isFormSubmit" [searchParam]="searchParams" [flightList]="flightList"></flight-list>
       </div>
     </tab>
-    <tab heading="Hotels">
-        Hotel Content
+    <tab heading="{{'tab.hotel.heading' | translate}}">
+      {{'tab.hotel.content' | translate}}
     </tab>
-    <tab heading="Cars">
-        Cab Content
+    <tab heading="{{'tab.car.heading' | translate}}">
+      {{'tab.car.content' | translate}}
     </tab>
-    <tab heading="Alpha">
-        Other Content
+    <tab heading="{{'tab.other.heading' | translate}}">
+        {{'tab.other.content' | translate}}
     </tab>
   </tabset>
 </div>

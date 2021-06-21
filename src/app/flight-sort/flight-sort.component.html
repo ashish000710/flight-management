@@ -1,7 +1,7 @@
 <div class="highlight-card">
     <div class="header-section">
         <fa-icon *ngIf="isMobileDevice" class="left-arrow" [icon]="faArrowLeft" (click)="gotToFlightSection()"></fa-icon>
-        Sort By
+        {{'sort.by.label' | translate}}
     </div>
     <div class="sort-container" *ngFor="let sort of sortingOption; let i = index;">
         <input type="radio" name="sortOption" (click)="sortBySelectedValue($event, sort)" [checked]="selectedSorting.id === sort.id"/>
